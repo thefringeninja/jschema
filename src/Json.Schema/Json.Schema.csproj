@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-  </PropertyGroup>
-
   <PropertyGroup Label="AssemblyAttributes">
     <AssemblyTitle>JSON Schema Library</AssemblyTitle>
     <Description>Classes for working with JSON Schema</Description>
