@@ -219,3 +219,6 @@ ModelManifest.xml
 
 # Visual Studio 2017 F5 settings file.
 launchSettings.json
+
+# Jetbrains
+.idea/
