@@ -231,7 +231,7 @@ namespace Microsoft.Json.Schema.ToDotNet
                 comparisonKind = ComparisonKind.OperatorEquals;
                 hashKind = HashKind.ScalarValueType;
                 initializationKind = InitializationKind.SimpleAssign;
-                type = MakeNamedType("System.DateTime", out namespaceName);
+                type = MakeNamedType("System.DateTimeOffset", out namespaceName);
             }
             else if (propertySchema.IsUri())
             {
