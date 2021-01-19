@@ -96,15 +96,22 @@ namespace Microsoft.Json.Schema.ToDotNet
             return MakeAccessor(SyntaxKind.SetAccessorDeclaration, body);
         }
 
+        internal static AccessorDeclarationSyntax MakeInitAccessor(BlockSyntax body = null)
+        {
+	        return MakeAccessor(SyntaxKind.InitAccessorDeclaration, body);
+        }
+
         internal static AccessorDeclarationSyntax MakeAccessor(SyntaxKind getOrSet, BlockSyntax body)
         {
             return SyntaxFactory.AccessorDeclaration(
                 getOrSet,
                 default(SyntaxList<AttributeListSyntax>),
                 default(SyntaxTokenList),
-                getOrSet == SyntaxKind.GetAccessorDeclaration
-                    ? SyntaxFactory.Token(SyntaxKind.GetKeyword)
-                    : SyntaxFactory.Token(SyntaxKind.SetKeyword),
+                getOrSet switch {
+	                SyntaxKind.GetAccessorDeclaration => SyntaxFactory.Token(SyntaxKind.GetKeyword),
+	                SyntaxKind.SetAccessorDeclaration => SyntaxFactory.Token(SyntaxKind.SetKeyword),
+	                SyntaxKind.InitAccessorDeclaration => SyntaxFactory.Token(SyntaxKind.InitKeyword),
+                },
                 body,
                 body == null ? SyntaxFactory.Token(SyntaxKind.SemicolonToken) : default(SyntaxToken));
         }

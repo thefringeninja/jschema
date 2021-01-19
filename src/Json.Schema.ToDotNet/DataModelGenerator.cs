@@ -282,18 +282,13 @@ namespace Microsoft.Json.Schema.ToDotNet
             TypeGenerator typeGenerator;
             if (enumHint == null)
             {
-                typeGenerator = new ClassGenerator(
+                typeGenerator = new RecordGenerator(
                     propertyInfoDictionary,
                     schema,
                     _settings.HintDictionary,
                     baseInterfaceName,
-                    _settings.GenerateEqualityComparers,
-                    _settings.GenerateCloningCode,
                     _settings.SealClasses,
                     _settings.VirtualMembers,
-                    _settings.ProtectedInitMethods,
-                    _nodeInterfaceName,
-                    _kindEnumName,
                     _settings.TypeNameSuffix);
 
                 if (_settings.GenerateCloningCode)

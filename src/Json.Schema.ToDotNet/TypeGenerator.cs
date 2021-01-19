@@ -73,7 +73,7 @@ namespace Microsoft.Json.Schema.ToDotNet
 
         protected void AddUsing(string namespaceName)
         {
-            Usings = Usings ?? new HashSet<string>();
+            Usings ??= new HashSet<string>();
 
             Usings.Add(namespaceName);
         }

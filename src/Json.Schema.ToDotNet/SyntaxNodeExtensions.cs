@@ -130,6 +130,11 @@ namespace Microsoft.Json.Schema.ToDotNet
                 return classDecl.AddAttributeLists(attributeListForGeneratedCodeAttribute);
             }
 
+            if (typeDecl is RecordDeclarationSyntax recordDecl)
+            {
+	            return recordDecl.AddAttributeLists(attributeListForGeneratedCodeAttribute);
+            }
+
             if (typeDecl is InterfaceDeclarationSyntax interfaceDecl)
             {
                 return interfaceDecl.AddAttributeLists(attributeListForGeneratedCodeAttribute);
