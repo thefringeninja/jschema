@@ -67,7 +67,7 @@ namespace Microsoft.Json.Schema.ToDotNet
                 ? SyntaxKind.SealedKeyword
                 : SyntaxKind.PartialKeyword;
 
-            var classDeclaration = SyntaxFactory.RecordDeclaration(default, default,
+            var recordDeclaration = SyntaxFactory.RecordDeclaration(default, default,
 			            SyntaxFactory.Token(SyntaxKind.RecordKeyword), SyntaxFactory.Identifier(SuffixedTypeName),
 			            default, default, default, default,
 			            SyntaxFactory.Token(SyntaxKind.OpenBraceToken), default,
@@ -79,10 +79,12 @@ namespace Microsoft.Json.Schema.ToDotNet
 				            SyntaxFactory.IdentifierName(DataContractAttributeName)))))
                 .AddModifiers(
                     SyntaxFactory.Token(SyntaxKind.PublicKeyword),
-                    SyntaxFactory.Token(sealedOrPartial))
-	            ;
+                    SyntaxFactory.Token(sealedOrPartial));
 
-            return classDeclaration;
+            AddUsing("System");
+            AddUsing("System.Runtime.Serialization");   // For DataContractAttribute;
+
+            return recordDeclaration;
         }
 
         public override void AddMembers()
